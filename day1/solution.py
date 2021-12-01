@@ -1,16 +1,6 @@
 from os import read
 import pathlib
 
-def findNumberOfIncreases(lines):
-    increasesInDepth = 0
-    previousline = int(lines[0])
-    for line in lines[1:]:
-        currentLine = int(line)
-        if currentLine>previousline:
-            increasesInDepth += 1
-        previousline = currentLine
-    return increasesInDepth
-
 def findNumberOfSlidingWindowIncreases(lines, sizeOfWindow = 3):
     increaseInDepth = 0
     numberOfWindows = range(len(lines) - sizeOfWindow + 1)
@@ -34,7 +24,7 @@ with open(pathlib.Path(__file__).parent / 'input.txt') as input:
 
     lines = contents.splitlines()
 
-    numberOfIncreases = findNumberOfIncreases(lines)
+    numberOfIncreases = findNumberOfSlidingWindowIncreases(lines, 1)
     numberOfIncreasesForSlidingWindow = findNumberOfSlidingWindowIncreases(lines)
 
     print("--------------------------------------------------------------")
